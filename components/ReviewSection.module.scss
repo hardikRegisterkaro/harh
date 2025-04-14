@@ -1,0 +1,188 @@
+.reviewSection {
+    padding: 4rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    section {
+        display: flex;
+        flex-direction: row; // This puts carousel on left
+        gap: 4rem;
+        align-items: flex-start;
+    }
+
+    .header {
+        flex: 0 0 35%; // Prevents shrinking and sets width
+        text-align: left;
+        padding-top: 2rem;
+
+        h1 {
+            color: #1a365d;
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .overallRating {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+
+            .ratingNumber {
+                font-size: 2rem;
+                font-weight: bold;
+                color: #1a365d;
+                margin-right: 0.5rem;
+            }
+
+            p {
+                margin-top: 0.5rem;
+                font-weight: 500;
+            }
+        }
+    }
+
+    .reviewsContainer {
+        flex: 0 0 65%;
+        display: flex;
+        gap: 2rem;
+        overflow-x: auto;
+        padding: 1rem 0;
+        position: relative;
+        scrollbar-width: none; // Firefox
+        -ms-overflow-style: none; // IE and Edge
+
+        &::-webkit-scrollbar {
+            display: none; // Chrome, Safari, and Opera
+            width: 0;
+            height: 0;
+        }
+    }
+
+    .reviewCard {
+        background: white;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        position: relative;
+        width: 320px; // Slightly smaller width
+        min-width: 320px;
+        height: 380px;
+        flex-shrink: 0;
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .reviewText {
+            color: #1a365d;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 3rem;
+        }
+
+        .author {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            right: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 2;
+
+            .authorInitials {
+                width: 40px;
+                height: 40px;
+                background: #1a365d;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 500;
+            }
+
+            .authorInfo {
+                h3 {
+                    color: #1a365d;
+                    margin: 0;
+                    font-weight: 500;
+                }
+
+                p {
+                    color: #4a5568;
+                    margin: 0;
+                    font-size: 0.9rem;
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; // Ensure no gap at bottom
+            left: 0;
+            right: 0;
+            height: 140px; // Increased height
+            background-image: url('../src//app/Vector.png');
+            background-size: 100% 100%; // Changed to cover full width and height
+            background-position: center bottom;
+            background-repeat: no-repeat;
+            z-index: 1; // Ensure it's above card but below author
+        }
+    }
+
+    .starFilled {
+        color: #ffa500;
+        font-size: 1.25rem;
+    }
+
+    .starEmpty {
+        color: #e2e8f0;
+        font-size: 1.25rem;
+    }
+
+    .nextButton {
+        position: absolute;
+        top: 50%;
+        right: -1rem;
+        transform: translateY(-50%);
+        background: white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+    }
+}
+
+@media (max-width: 1024px) {
+    .reviewSection {
+        section {
+            flex-direction: column;
+        }
+
+        .header, .reviewsContainer {
+            flex: 0 0 100%;
+        }
+    }
+}
